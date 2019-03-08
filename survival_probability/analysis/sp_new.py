@@ -13,9 +13,10 @@ for lipid_id in range(1, 3 + 1):
     sp.run(start=1, tau_max=20)
 
     # Raw SP points for each tau:
-    for merged_sps, new_sps in zip(joined_sp_timeseries, sp.sp_timeseries_data):
-        merged_sps.extend(new_sps)
+    for sps, new_sps in zip(joined_sp_timeseries, sp.sp_timeseries_data):
+        sps.extend(new_sps)
 
+# calculate the mean SP for each tau
 sp_data = [np.mean(sp) for sp in joined_sp_timeseries]
 
 for tau, sp in zip(range(1, 20 + 1), sp_data):
